@@ -1,0 +1,127 @@
+---
+import { Image } from "astro:assets";
+---
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quique Ciria</title>
+    <meta name="description" content="tags, tags" />
+    <link href="https://fonts.googleapis.com/css?family=Chivo:200,300,400&display=swap" rel="stylesheet">
+</head>
+
+  <body class="mx-10 my-10 max-w-3xl font-sans text-smlate-800 bg-slate-300">
+    <div class="">
+   <a href="/"><img src="/imgs/arrow-left.svg"></a>
+    </div>
+    <div class="text-5xl mt-10">
+        Notifications Inbox
+    </div>
+    <div class="pt-10 text-3xl font-extralight leading-tight">
+      La app Mi Movistar (Android/iOS/Web) es la aplicación que usan los clientes de la operadora de telecomunicaciones Movistar en España.
+    </div>
+    <div class="py-3 text-xl font-light">Además esta misma aplicación es brandeada para usar en otras marcas del grupo. Desde esta herramienta se pueden gestionar todas las líneas y servicios, tanto de contrato y prepago móvil, así como la gestión de los paquetes de TV Movistar +</div>
+    <div class="py-2 ">
+        <Image src="/imgs/appMiMovistar.png" alt="" width="1500" height="1000"/>
+    </div>
+    <div class="text-sm font-extralight"><a class="border-b border-slate-800 hover:border-orange-400" href="/imgs/appMiMovistar.png" target="_blank">Imagen</a></div>
+    <div class="py-2 ">
+      <Image src="/imgs/appMiMovistarDetails.png" alt="" width="1500" height="1000"/>
+  </div>
+  <div class="text-sm font-extralight"><a class="border-b border-slate-800 hover:border-orange-400"href="/imgs/appMiMovistarDetails.png" target="_blank">Imagen</a></div>
+
+
+    <div class="text-3xl pt-8">Comprender el problema</div>
+    <div class="text-xl pt-4 font-light">
+      Existía una <strong>necesidad de comunicarse con los clientes</strong> dentro de la app de Mi Movistar de una forma <strong>ágil y lo menos intrusiva</strong> posible. El objetivo era, por tanto, poder enviar de forma breve tanto notificaciones, como avisos, promociones o información relevante para el cliente. Además, estas notificaciones se deberían de poder ir almacenando en un lugar dentro de la app, como por ejemplo un buzón, para poder ser consumidas más tarde.
+  </div>
+  <div class="text-xl pt-4 font-light">
+    Principalmente se tomaron como referencia los procesos similares que ya existían y se usaban en otras aplicaciones para enviar notificaciones dentro de sus apps y almacenarlas, ya que era un sistema conocido por el usuario e identificado de forma natural.
+</div>
+<div class="text-3xl pt-8">Objetivos</div>
+<div class="text-xl pt-4 font-light">
+  Como primera versión de la feature se definieron una serie de use cases, pensando en tener la funcionalidad disponible cuanto antes. Y por otro lado, en el mismo proyecto se definió una segunda parte de mejoras futuras y modificaciones teniendo en cuenta lo ya aprendido por la experiencia y las métricas de la primera fase.
+</div>
+<div class="text-3xl pt-8">Use cases</div>
+<div class="text-xl pt-4 ml-8 font-light">
+  <ul class="list-disc">
+    <li class="mb-3">El usuario debe de <strong>recibir algún tipo de notificación</strong> que permita la interacción directa cuando la app está cerrada (<i>push notification</i>).</li>
+    <li class="mb-3">
+      La app cuenta con un lugar <strong>donde se almacenan estas notificaciones</strong> y pueden ser consultadas posteriormente (buzón).
+    </li>
+    <li class="mb-3"><strong>El usuario puede percibir</strong> por medio de un contador/icono/botón <strong>la cantidad de mensajes no leidos</strong> desde una parte de la app relevante y con sentido dentro la arquitectura de información.</li>
+    <li class="mb-3">El usuario debe saber que notificaciones <strong>están recibidas, no leídas aún y cuales sí</strong>.</li>
+    <li><strong>El usuario puede interactuar en cualquier momento de la notificación</strong> para ir al lugar donde ocurre o se propone la acción; así como en caso de ser informativa permitir un destino.</li>
+  </ul>
+</div>
+
+<div class="text-3xl pt-8">Elementos y requerimientos de la notificación y el inbox</div>
+<div class="text-xl pt-4 ml-8 font-light">
+  <ul class="list-disc">
+    <li class="mb-3">El componente notificación pueden contener imágenes; y en el texto, *emojis,* negritas o cursivas (síntaxis *markdown*).</li>
+<li class="mb-3">La notificación incluyen la hora, en las primeras 24 horas; el día de la semana, en la primera semana; y el día del mes cuando ha transcurrido más de una semana de haber sido recibida.</li>
+<li class="mb-3">El texto de la notificación está compuesto por un título y un cuerpo de texto.</li>
+<li class="mb-3">El texto está limitado a 15 carácteres en el título y 150 en el cuerpo de texto.</li>
+<li class="mb-3">Será necesario diseñar pantallas de <i>empty state</i> cuando no haya notificaciones o no exista conexión con el servidor.</li>
+<li class="mb-3">Se debe de contar con una pantalla para visualizar contenido visual del tipo imágenes o vídeos.</li>
+</ul>
+</div>
+
+<div class="text-3xl pt-8">Proceso</div>
+<Image class="py-2" src="/imgs/708x398.png" alt="" width="1500" height="1000"/>
+</div>
+<div class="text-sm font-extralight">Proceso para añadir una nueva funcionalidad a la app. <a class="border-b border-slate-800 hover:border-orange-400" href="/imgs/708x398.png" target="_blank">Imagen</a></div>
+<Image class="py-2" src="/imgs/Process2.png" alt="" width="1500" height="1000"/>
+</div>
+<div class="text-sm font-extralight"><a class="border-b border-slate-800 hover:border-orange-400" href="/imgs/Process2.png" target="_blank">Imagen</a></div>
+<Image class="py-2" src="/imgs/Process3.png" alt="" width="1500" height="1000"/>
+</div>
+<div class="text-sm font-extralight">Diferentes detalles del proceso. <a class="border-b border-slate-800 hover:border-orange-400" href="/imgs/Process3.png" target="_blank">Imagen</a></div>
+
+<div class="text-3xl pt-8">Diseño</div>
+<div class="text-xl pt-4 font-light">Después de las diferentes <strong>reuniones con el equipo</strong>, haber <strong>boceteado</strong> diferentes formas de añadir está <i>feature</i> a la experiencia, <strong>iterar con el equipo de diseño y desarrollo</strong> y definir los <strong>flujos de usuario</strong> dentro de la app, diseñamos y <strong>aplicamos los estandares y componentes del sistema de diseño </strong> <a class="border-b border-slate-800 hover:border-orange-400" href="https://www.notion.so/3e77c432d8324d1ea86164effb09dc80?pvs=21" target="_blank">Mística</a>.</div>
+
+<div class="text-xl pt-4 pb-2 font-light">Además, por otro lado, hubo que crear varios componentes nuevos para introducir en la librería, con lo que hubo un proceso paralelo de documentación y validación de nuevos componentes en el equipo de diseño global.</div>
+<Image class="py-2"src="/imgs/app_high_quality.png" alt="" width="1500" height="1000"/>
+</div>
+<div class="text-sm font-extralight">Visuales del <i>Notificación Inbox</i>. <a class="border-b border-slate-800 hover:border-orange-400" href="/imgs/app_high_quality.png" target="_blank">Imagen</a></div>
+<Image class="py-2"src="/imgs/app_high_quality_brands.png" alt="" width="1500" height="1000"/>
+</div>
+<div class="text-sm font-extralight">Aplicación de marca. <a class="border-b border-slate-800 hover:border-orange-400" href="/imgs/app_high_quality_brands.png" target="_blank">Imagen</a></div>
+
+<div class="text-xl pt-4 font-light">
+  La aplicación es usada por varias marcas, por tanto cualquier componente o pantalla debe poder ser aplicado en otros colores. El <strong>sistema de diseño y cualquier componente</strong> nuevo que vaya a ser añadido al sistema de diseño <strong>debe de haber sido estudiado y documentado</strong> para poder ser aplicado por otra marca de la compañía de forma adecuada y estandarizada.
+
+
+</div>
+<Image class="py-2"src="/imgs/app_high_quality _badge.png" alt="" width="1500" height="1000"/>
+</div>
+<div class="text-sm font-extralight">Puedes ver esta imagen ampliada en otra ventana <a class="border-b border-slate-800 hover:border-orange-400" href="/imgs/app_high_quality _badge.png" target="_blank">Imagen</a></div>
+<Image class="py-2" src="/imgs/app_high_quality_sta comp.png" alt="" width="1500" height="1000"/>
+</div>
+<div class="text-sm font-extralight">Design specs. de nuevos componentes añadidos al sistema. <a class="border-b border-slate-800 hover:border-orange-400" href="/imgs/app_high_quality_sta comp.png" target="_blank">Imagen</a></div>
+
+<div class="text-xl pt-4 font-light">
+  Además del handoff de la feature para desarrollo por medio de Zeplin. Hubo que <strong>añadir dos componentes nuevos dentro del sistema de diseño Mística</strong>. Para ello, además de reuniones y conversaciones sobre su aplicación, es necesario documentar y definir las design specifications de cada componente que servirán, tanto para el equipo de desarrollo como para el equipo de diseño a la hora de hacer una correcta aplicación de los componentes
+</div>
+<div class="text-3xl pt-8">Trabajo en equipo</div>
+<div class="text-xl pt-4 font-light">Todo el diseño de este proyecto se realizó en un equipo formado por dos diseñadores de producto (UX+UI). En la parte más de usabilidad y desarrollo de experiencia trabaje junto a <a class="border-b border-slate-800 hover:border-orange-400" href="https://www.linkedin.com/in/patriciagalandecastro/">Patricia Galán</a> y <a class="border-b border-slate-800 hover:border-orange-400" href="https://www.linkedin.com/in/carlosdemiguelpamplona/">Carlos de Miguel</a>. Mi rol, además de participar en la definición de la *feature* y su aplicación, principalmente se materializo en el <strong>diseño visual, la aplicación e ideación de los nuevos componentes del sistema de diseño y el trabajo de aplicación y soporte con el equipo de desarrollo.</strong></div>
+
+<div class="text-3xl pt-8">Herramientas usadas</div>
+<div class="text-xl pt-4 ml-8 font-light">
+  <ul class="list-disc">
+    <li class="mb-3">Sketch</li>
+    <li class="mb-3">Zeplin</li>
+    <li class="mb-3">Jira</li>
+    <li class="mb-3">Google docs</li>
+    <li class="mb-3">Gitbook</li>
+    <li class="mb-3">Slack</li>
+  </ul>
+</div>
+    <div class="pt-8 mt-10 border-t border-slate-400">
+      <a class="border-b border-slate-800 hover:border-orange-400"  href="#">Quique Ciria</a>. 2021 - 
+      <a class="border-b border-slate-800 hover:border-orange-400" <a class="border-b border-slate-800 hover:border-orange-400"  href="mailto:info@quiqueciria.es">info@quiqueciria.es</a>
+    </div>
+  </body>
+</html>
