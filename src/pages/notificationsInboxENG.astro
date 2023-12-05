@@ -1,0 +1,129 @@
+---
+import { Image } from "astro:assets";
+---
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quique Ciria</title>
+    <meta name="description" content="tags, tags" />
+    <link href="https://fonts.googleapis.com/css?family=Chivo:200,300,400&display=swap" rel="stylesheet">
+</head>
+
+  <body class="mx-10 my-10 max-w-3xl font-sans text-slate-800 bg-yellow-50">
+    <div class="">
+   <a href="/"><img src="/imgs/arrow-left.svg"></a>
+    </div>
+    <div class="text-5xl mt-10">
+        Notifications Inbox
+    </div>
+
+        
+    <div class="p-4 mt-8 bg-yellow-100 font-extralight rounded-lg">🇪🇦 Puedes encontrar una versión de este caso de estudio en español en este <a class="border-b border-slate-800 hover:border-orange-400" href="https://quiquec.notion.site/76dc130f2bd34d41999caff08270519e" target="_blank">link</a></div>
+
+    <div class="text-3xl pt-8">Background</div>
+  <div class="text-xl pt-4 pb-8 font-extralight">
+    The app Mi Movistar (Android/iOS/Web) is the application used by Movistar's customers in Spain (the biggest Telco in the country). This application was customized to be leveraged by other brands of the company. From this tool, it is possible to manage all the lines and services of the paid or prepaid contracts as well as the management of the Movistar+ TV packages. </div>
+    <div class="py-2 ">
+        <Image src="/imgs/appMiMovistar.png" alt="" width="1500" height="1000"/>
+    </div>
+    <div class="text-sm font-extralight">App Mi Movistar. <a class="border-b border-slate-800 hover:border-orange-400" href="/imgs/appMiMovistar.png" target="_blank">Image</a></div>
+    <div class="py-2 ">
+      <Image src="/imgs/appMiMovistarDetails.png" alt="" width="1500" height="1000"/>
+  </div>
+  <div class="text-sm font-extralight">App Mi Movistar. <a class="border-b border-slate-800 hover:border-orange-400"href="/imgs/appMiMovistarDetails.png" target="_blank">Image</a></div>
+
+
+    <div class="text-3xl pt-8">Understand the problem</div>
+    <div class="text-xl pt-4 font-extralight">
+      There was a <strong>need of comunication to the clients</strong> within the Mi Movistar app in an <strong>agile way and less intrusive as possible</strong>. The objective was to send short notifications, alerts, promotions or any type of relevant information to the customers. In addition, notifications are stored in the app, like for example an inbox, so customers can read later.
+  </div>
+  <div class="text-xl pt-4 font-extralight">
+    Mainly, the similar processes that already existed and were used in other applications to send notifications within their apps and store them were taken as a reference, since it was a system known by the user and identified in a natural way.
+</div>
+<div class="text-3xl pt-8">Goals</div>
+<div class="text-xl pt-4 font-extralight">
+  As the first version of the feature, a series of use cases were defined, thinking of having the functionality available as soon as possible. And on the other hand, in the same project, a second part of future improvements and modifications was defined, taking into account what has already been learned from the experience and the metrics of the first phase.
+</div>
+<div class="text-3xl pt-8">Use cases</div>
+<div class="text-xl pt-4 ml-8 font-extralight">
+  <ul class="list-disc">
+    <li class="mb-3">The user must be able to <strong>receive any type of notification</strong> that allows direct interaction when the application is closed (push notification).</li>
+    <li class="mb-3">
+      The application must have a place <strong>where the notifications received are saved</strong> and these can be consulted later.
+    </li>
+    <li class="mb-3"><strong>The user can perceive by means of a counter, icon or button the amount of unread messages</strong>, placed in a relevant and meaningful position within the architecture of the application.</li>
+    <li class="mb-3">The user must know which notifications <strong>he receives, which he has not yet read and which he has</strong>.</li>
+    <li><strong>The user can interact at any time in the life cycle of the notification</strong> to go to the place where the action occurs or is proposed; or in the case of being informative, allow a link.</li>
+  </ul>
+</div>
+
+<div class="text-3xl pt-8">Elements and requirements of the notification and the inbox</div>
+<div class="text-xl pt-4 ml-8 font-extralight">
+  <ul class="list-disc">
+    <li class="mb-3">The notification component can contain images; and in the text, emojis, bold or italic (markdown syntax).</li>
+<li class="mb-3">The notification includes the time, in the first 24 hours; the day of week, in the first week; and the day of month if more than a week has passed since the notification was received.</li>
+<li class="mb-3">The notification text is composed of a title and a body text.</li>
+<li class="mb-3">The text is limited to 15 characters in the title and 150 characters in the body text.</li>
+<li class="mb-3">It is necessary to design empty states screens when there aren't any notifications or connection with the server doesn't exist.</li>
+<li class="mb-3">There must be a screen for visualizing visual content, all kind of images or videos.</li>
+</ul>
+</div>
+
+<div class="text-3xl pt-8">Procces</div>
+<Image class="py-2" src="/imgs/708x398.png" alt="" width="1500" height="1000"/>
+</div>
+<div class="text-sm font-extralight">Process to add a new functionality to the app. <a class="border-b border-slate-800 hover:border-orange-400" href="/imgs/708x398.png" target="_blank">Image</a></div>
+<Image class="py-2" src="/imgs/Process2.png" alt="" width="1500" height="1000"/>
+</div>
+<div class="text-sm font-extralight"><a class="border-b border-slate-800 hover:border-orange-400" href="/imgs/Process2.png" target="_blank">Image</a></div>
+<Image class="py-2" src="/imgs/Process3.png" alt="" width="1500" height="1000"/>
+</div>
+<div class="text-sm font-extralight">Different details of the process. <a class="border-b border-slate-800 hover:border-orange-400" href="/imgs/Process3.png" target="_blank">Image</a></div>
+
+<div class="text-3xl pt-8">Design</div>
+<div class="text-xl pt-4 font-extralight">After having multiple <strong>meetings with the team</strong>, having <strong>sketched</strong> different ways to add this feature to the experience, <strong>iterate with the design and development teams</strong> and to define the user flows within of the app, we designed and <strong>applied the standars and components of the design system <a class="border-b border-slate-800 hover:border-orange-400" href="https://www.notion.so/3e77c432d8324d1ea86164effb09dc80?pvs=21" target="_blank">Mística</a></strong>.</div>
+
+<div class="text-xl pt-4 pb-4 font-extralight">In addition, it was necessary to <strong>create several new components</strong> to introduce in the library. This was a <strong>parallel process of documentation and validation</strong> of those with the global design team.</div>
+<Image class="py-2"src="/imgs/app_high_quality.png" alt="" width="1500" height="1000"/>
+</div>
+<div class="text-sm font-extralight">Visuals of the features Notification Inbox.</i> <a class="border-b border-slate-800 hover:border-orange-400" href="/imgs/app_high_quality.png" target="_blank">Image</a></div>
+<Image class="py-2"src="/imgs/app_high_quality_brands.png" alt="" width="1500" height="1000"/>
+</div>
+<div class="text-sm font-extralight">Brand application. <a class="border-b border-slate-800 hover:border-orange-400" href="/imgs/app_high_quality_brands.png" target="_blank">Image</a></div>
+
+<div class="text-xl py-6 font-extralight">
+  The application is used by different brands, so any component or screen must be applied in different colors. <strong>The design system and any new component that is added</strong> to the design system <strong>must be studied and documented</strong> in order to be applied to other brands of the company in a correct and standardized way.
+</div>
+<Image class="py-2"src="/imgs/app_high_quality _badge.png" alt="" width="1500" height="1000"/>
+</div>
+<div class="text-sm font-extralight">Design specifications of new components added to the system. <a class="border-b border-slate-800 hover:border-orange-400" href="/imgs/app_high_quality _badge.png" target="_blank">Image</a></div>
+<Image class="py-2" src="/imgs/app_high_quality_sta comp.png" alt="" width="1500" height="1000"/>
+</div>
+<div class="text-sm font-extralight">Design specifications of new components added to the system. <a class="border-b border-slate-800 hover:border-orange-400" href="/imgs/app_high_quality_sta comp.png" target="_blank">Image</a></div>
+
+<div class="text-xl pt-4 font-extralight">
+  In addition to the transfer of the function for its development through Zeplin. It was necessary <strong> to add two new components within the Mística design system</strong>. For this, in addition to meetings and conversations about its application, it is necessary to document and define the design specifications of each component that will serve, both for the development and design team, when making a correct application of the components.
+</div>
+<div class="text-3xl pt-8">Teamwork</div>
+<div class="text-xl pt-4 font-extralight ">This design project was executed by a team of two product designers (UX+UI). In the usability and experience side, I worked with <a class="border-b border-slate-800 hover:border-orange-400" href="https://www.linkedin.com/in/patriciagalandecastro/">Patricia Galán</a> and <a class="border-b border-slate-800 hover:border-orange-400" href="https://www.linkedin.com/in/carlosdemiguelpamplona">Carlos de Miguel</a>. My role, in addition to participating in the definition of the feature and its application, mainly materialized in the <strong>visual design, the application and ideation of the new components of the design system and the application and support work with the development team.</strong></div>
+
+<div class="text-3xl pt-8">Herramientas usadas</div>
+<div class="text-xl pt-4 ml-5 font-extralight">
+  <ul class="list-disc sm:columns-2">
+    <li class="mb-3">Sketch</li>
+    <li class="mb-3">Zeplin</li>
+    <li class="mb-3">Jira</li>
+    <li class="mb-3">Google docs</li>
+    <li class="mb-3">Gitbook</li>
+    <li class="mb-3">Slack</li>
+  </ul>
+</div>
+<div class="border-t border-slate-400 my-8"></div>
+<div>
+  <a class="border-b pb-1 border-slate-800 hover:border-orange-400" href="/">Quique Ciria </a>• 2021 • 
+  <a class="border-b pb-1 border-slate-800 hover:border-orange-400" href="mailto:info@quiqueciria.es">info @ quiqueciria.es</a>
+</div>
+  </body>
+</html>
