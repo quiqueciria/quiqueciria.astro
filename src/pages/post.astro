@@ -11,7 +11,7 @@ import { Image } from "astro:assets";
     <link href="https://fonts.googleapis.com/css?family=Chivo:200,300,400&display=swap" rel="stylesheet">
 </head>
 
-  <body class="mx-10 my-10 max-w-3xl font-sans text-smlate-800 bg-slate-300">
+  <body class="mx-10 my-10 max-w-3xl font-sans text-slate-800 bg-yellow-50">
     <div class="">
    <a href="/"><img src="/imgs/arrow-left.svg"></a>
     </div>
@@ -21,7 +21,7 @@ import { Image } from "astro:assets";
     <div class="pt-10 text-3xl font-extralight leading-tight">
       La app Mi Movistar (Android/iOS/Web) es la aplicación que usan los clientes de la operadora de telecomunicaciones Movistar en España.
     </div>
-    <div class="py-3 text-xl font-light">Además esta misma aplicación es brandeada para usar en otras marcas del grupo. Desde esta herramienta se pueden gestionar todas las líneas y servicios, tanto de contrato y prepago móvil, así como la gestión de los paquetes de TV Movistar +</div>
+    <div class="py-3 text-xl font-extralight">Además esta misma aplicación es brandeada para usar en otras marcas del grupo. Desde esta herramienta se pueden gestionar todas las líneas y servicios, tanto de contrato y prepago móvil, así como la gestión de los paquetes de TV Movistar +</div>
     <div class="py-2 ">
         <Image src="/imgs/appMiMovistar.png" alt="" width="1500" height="1000"/>
     </div>
@@ -33,18 +33,18 @@ import { Image } from "astro:assets";
 
 
     <div class="text-3xl pt-8">Comprender el problema</div>
-    <div class="text-xl pt-4 font-light">
+    <div class="text-xl pt-4 font-extralight">
       Existía una <strong>necesidad de comunicarse con los clientes</strong> dentro de la app de Mi Movistar de una forma <strong>ágil y lo menos intrusiva</strong> posible. El objetivo era, por tanto, poder enviar de forma breve tanto notificaciones, como avisos, promociones o información relevante para el cliente. Además, estas notificaciones se deberían de poder ir almacenando en un lugar dentro de la app, como por ejemplo un buzón, para poder ser consumidas más tarde.
   </div>
-  <div class="text-xl pt-4 font-light">
+  <div class="text-xl pt-4 font-extralight">
     Principalmente se tomaron como referencia los procesos similares que ya existían y se usaban en otras aplicaciones para enviar notificaciones dentro de sus apps y almacenarlas, ya que era un sistema conocido por el usuario e identificado de forma natural.
 </div>
 <div class="text-3xl pt-8">Objetivos</div>
-<div class="text-xl pt-4 font-light">
+<div class="text-xl pt-4 font-extralight">
   Como primera versión de la feature se definieron una serie de use cases, pensando en tener la funcionalidad disponible cuanto antes. Y por otro lado, en el mismo proyecto se definió una segunda parte de mejoras futuras y modificaciones teniendo en cuenta lo ya aprendido por la experiencia y las métricas de la primera fase.
 </div>
 <div class="text-3xl pt-8">Use cases</div>
-<div class="text-xl pt-4 ml-8 font-light">
+<div class="text-xl pt-4 ml-8 font-extralight">
   <ul class="list-disc">
     <li class="mb-3">El usuario debe de <strong>recibir algún tipo de notificación</strong> que permita la interacción directa cuando la app está cerrada (<i>push notification</i>).</li>
     <li class="mb-3">
@@ -57,7 +57,7 @@ import { Image } from "astro:assets";
 </div>
 
 <div class="text-3xl pt-8">Elementos y requerimientos de la notificación y el inbox</div>
-<div class="text-xl pt-4 ml-8 font-light">
+<div class="text-xl pt-4 ml-8 font-extralight">
   <ul class="list-disc">
     <li class="mb-3">El componente notificación pueden contener imágenes; y en el texto, *emojis,* negritas o cursivas (síntaxis *markdown*).</li>
 <li class="mb-3">La notificación incluyen la hora, en las primeras 24 horas; el día de la semana, en la primera semana; y el día del mes cuando ha transcurrido más de una semana de haber sido recibida.</li>
@@ -80,9 +80,9 @@ import { Image } from "astro:assets";
 <div class="text-sm font-extralight">Diferentes detalles del proceso. <a class="border-b border-slate-800 hover:border-orange-400" href="/imgs/Process3.png" target="_blank">Imagen</a></div>
 
 <div class="text-3xl pt-8">Diseño</div>
-<div class="text-xl pt-4 font-light">Después de las diferentes <strong>reuniones con el equipo</strong>, haber <strong>boceteado</strong> diferentes formas de añadir está <i>feature</i> a la experiencia, <strong>iterar con el equipo de diseño y desarrollo</strong> y definir los <strong>flujos de usuario</strong> dentro de la app, diseñamos y <strong>aplicamos los estandares y componentes del sistema de diseño </strong> <a class="border-b border-slate-800 hover:border-orange-400" href="https://www.notion.so/3e77c432d8324d1ea86164effb09dc80?pvs=21" target="_blank">Mística</a>.</div>
+<div class="text-xl pt-4 font-extralight">Después de las diferentes <strong>reuniones con el equipo</strong>, haber <strong>boceteado</strong> diferentes formas de añadir está <i>feature</i> a la experiencia, <strong>iterar con el equipo de diseño y desarrollo</strong> y definir los <strong>flujos de usuario</strong> dentro de la app, diseñamos y <strong>aplicamos los estandares y componentes del sistema de diseño </strong> <a class="border-b border-slate-800 hover:border-orange-400" href="https://www.notion.so/3e77c432d8324d1ea86164effb09dc80?pvs=21" target="_blank">Mística</a>.</div>
 
-<div class="text-xl pt-4 pb-2 font-light">Además, por otro lado, hubo que crear varios componentes nuevos para introducir en la librería, con lo que hubo un proceso paralelo de documentación y validación de nuevos componentes en el equipo de diseño global.</div>
+<div class="text-xl pt-4 pb-2 font-extralight">Además, por otro lado, hubo que crear varios componentes nuevos para introducir en la librería, con lo que hubo un proceso paralelo de documentación y validación de nuevos componentes en el equipo de diseño global.</div>
 <Image class="py-2"src="/imgs/app_high_quality.png" alt="" width="1500" height="1000"/>
 </div>
 <div class="text-sm font-extralight">Visuales del <i>Notificación Inbox</i>. <a class="border-b border-slate-800 hover:border-orange-400" href="/imgs/app_high_quality.png" target="_blank">Imagen</a></div>
@@ -90,7 +90,7 @@ import { Image } from "astro:assets";
 </div>
 <div class="text-sm font-extralight">Aplicación de marca. <a class="border-b border-slate-800 hover:border-orange-400" href="/imgs/app_high_quality_brands.png" target="_blank">Imagen</a></div>
 
-<div class="text-xl pt-4 font-light">
+<div class="text-xl pt-4 font-extralight">
   La aplicación es usada por varias marcas, por tanto cualquier componente o pantalla debe poder ser aplicado en otros colores. El <strong>sistema de diseño y cualquier componente</strong> nuevo que vaya a ser añadido al sistema de diseño <strong>debe de haber sido estudiado y documentado</strong> para poder ser aplicado por otra marca de la compañía de forma adecuada y estandarizada.
 
 
@@ -102,14 +102,14 @@ import { Image } from "astro:assets";
 </div>
 <div class="text-sm font-extralight">Design specs. de nuevos componentes añadidos al sistema. <a class="border-b border-slate-800 hover:border-orange-400" href="/imgs/app_high_quality_sta comp.png" target="_blank">Imagen</a></div>
 
-<div class="text-xl pt-4 font-light">
+<div class="text-xl pt-4 font-extralight">
   Además del handoff de la feature para desarrollo por medio de Zeplin. Hubo que <strong>añadir dos componentes nuevos dentro del sistema de diseño Mística</strong>. Para ello, además de reuniones y conversaciones sobre su aplicación, es necesario documentar y definir las design specifications de cada componente que servirán, tanto para el equipo de desarrollo como para el equipo de diseño a la hora de hacer una correcta aplicación de los componentes
 </div>
 <div class="text-3xl pt-8">Trabajo en equipo</div>
-<div class="text-xl pt-4 font-light">Todo el diseño de este proyecto se realizó en un equipo formado por dos diseñadores de producto (UX+UI). En la parte más de usabilidad y desarrollo de experiencia trabaje junto a <a class="border-b border-slate-800 hover:border-orange-400" href="https://www.linkedin.com/in/patriciagalandecastro/">Patricia Galán</a> y <a class="border-b border-slate-800 hover:border-orange-400" href="https://www.linkedin.com/in/carlosdemiguelpamplona/">Carlos de Miguel</a>. Mi rol, además de participar en la definición de la *feature* y su aplicación, principalmente se materializo en el <strong>diseño visual, la aplicación e ideación de los nuevos componentes del sistema de diseño y el trabajo de aplicación y soporte con el equipo de desarrollo.</strong></div>
+<div class="text-xl pt-4 font-extralight">Todo el diseño de este proyecto se realizó en un equipo formado por dos diseñadores de producto (UX+UI). En la parte más de usabilidad y desarrollo de experiencia trabaje junto a <a class="border-b border-slate-800 hover:border-orange-400" href="https://www.linkedin.com/in/patriciagalandecastro/">Patricia Galán</a> y <a class="border-b border-slate-800 hover:border-orange-400" href="https://www.linkedin.com/in/carlosdemiguelpamplona/">Carlos de Miguel</a>. Mi rol, además de participar en la definición de la *feature* y su aplicación, principalmente se materializo en el <strong>diseño visual, la aplicación e ideación de los nuevos componentes del sistema de diseño y el trabajo de aplicación y soporte con el equipo de desarrollo.</strong></div>
 
 <div class="text-3xl pt-8">Herramientas usadas</div>
-<div class="text-xl pt-4 ml-8 font-light">
+<div class="text-xl pt-4 ml-8 font-extralight">
   <ul class="list-disc">
     <li class="mb-3">Sketch</li>
     <li class="mb-3">Zeplin</li>
