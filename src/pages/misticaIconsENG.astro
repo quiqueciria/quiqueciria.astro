@@ -12,113 +12,141 @@ import { Image } from "astro:assets";
     <link href="https://fonts.googleapis.com/css?family=Chivo:200,300,400&display=swap" rel="stylesheet">
 </head>
 
-  <body class="mx-10 my-10 max-w-3xl font-sans text-slate-800 bg-green-700">
+  <body class="mx-10 my-10 max-w-3xl font-sans text-slate-800 bg-green-50">
     <div class="">
    <a href="/"><img src="/imgs/arrow-left.svg"></a>
     </div>
     <div class="text-5xl mt-10">
-        Notifications Inbox
+        Mística icons
     </div>
 
         
-    <div class="bg-green-300 p-4 mt-8 font-extralight rounded-lg">🇪🇦 Puedes encontrar una versión de este caso de estudio en español en este <a href="https://quiquec.notion.site/76dc130f2bd34d41999caff08270519e" target="_blank">link</a></div>
+    <div class="bg-green-100 p-4 mt-8 font-extralight rounded-lg">🇪🇦 Puedes encontrar una versión de este caso de estudio en español en este <a href="https://www.notion.so/M-stica-icons-aa012a6e89b34ffaabbd46f1d317a16f?pvs=4" target="_blank">link</a></div>
 
     <div class="text-3xl pt-8">Background</div>
   <div class="text-xl pt-4 pb-8 font-extralight">
-    The app Mi Movistar (Android/iOS/Web) is the application used by Movistar's customers in Spain (the biggest Telco in the country). This application was customized to be leveraged by other brands of the company. From this tool, it is possible to manage all the lines and services of the paid or prepaid contracts as well as the management of the Movistar+ TV packages. </div>
+    There's a constant need of creating new icons, updates and support while developing of the apps of Telefónica. These assets are fundamentals in multiple flows and screens across different apps. In addition, it's essential that these icons reflect the brand image and harmonize to the rest of components and actions.</div>
     <div class="py-2 ">
-        <Image src="/imgs/appMiMovistar.png" alt="" width="1500" height="1000"/>
+        <Image src="/imgs/icons-one.png" alt="" width="1500" height="1000"/>
     </div>
-    <div class="text-sm font-extralight">App Mi Movistar. <a href="/imgs/appMiMovistar.png" target="_blank">Image</a></div>
+    <div class="text-sm pb-8 font-extralight">Some icons of Mística icons. <a href="/imgs/icons-one.png" target="_blank">Image</a></div>
     <div class="py-2 ">
-      <Image src="/imgs/appMiMovistarDetails.png" alt="" width="1500" height="1000"/>
+      <Image src="/imgs/icons-details.png" alt="" width="1500" height="1000"/>
   </div>
-  <div class="text-sm font-extralight">App Mi Movistar. <a href="/imgs/appMiMovistarDetails.png" target="_blank">Image</a></div>
-
-
-    <div class="text-3xl pt-8">Understand the problem</div>
+  <div class="text-sm pb-8 font-extralight">Details of icons in different contexts. <a href="/imgs/icons-details.png" target="_blank">Image</a></div>
     <div class="text-xl pt-4 font-extralight">
-      There was a <strong>need of comunication to the clients</strong> within the Mi Movistar app in an <strong>agile way and less intrusive as possible</strong>. The objective was to send short notifications, alerts, promotions or any type of relevant information to the customers. In addition, notifications are stored in the app, like for example an inbox, so customers can read later.
+        On the other hand, internally in the design team, each designer works autonomously but coordinated and together with their product team; and a development team works in a agile way, with established standars and definitions, so it was neccesary to homogenize a process and define patterns for the icons at a global level.
   </div>
   <div class="text-xl pt-4 font-extralight">
-    Mainly, the similar processes that already existed and were used in other applications to send notifications within their apps and store them were taken as a reference, since it was a system known by the user and identified in a natural way.
+    This project was born with the need to create a design system (<a href="https://www.notion.so/M-stica-Design-System-9a1b4e6b5f68416992fc20352bcb2340?pvs=4">Mística</a>) that supported the entire ecosystem of digital products and services of Telefónica company. The idea was to have an icon library to support this design system.
 </div>
-<div class="text-3xl pt-8">Goals</div>
 <div class="text-xl pt-4 font-extralight">
-  As the first version of the feature, a series of use cases were defined, thinking of having the functionality available as soon as possible. And on the other hand, in the same project, a second part of future improvements and modifications was defined, taking into account what has already been learned from the experience and the metrics of the first phase.
+    Before this, each brand worked independently, with multitude of designs, patterns and work processes in each team.
 </div>
-<div class="text-3xl pt-8">Use cases</div>
+<div class="text-3xl pt-8">Understand the problem</div>
+<div class="text-xl pb-8 pt-4 font-extralight">
+    To move steadily from the current situation it was important to establish a series of priorities to achieve the objectives, from the most generic one to the most specific. The idea was to create a stable base on to build the entire system. This meant that we would have to work simultaneously with two different systems of icons during a period of time and two different workstreams until we got to a point of no return, where we shifted to the new one. Thus this process took a while, it coexisted with the rest of projects and was adapted according to the situation.
+</div>
+<Image class="py-2" src="/imgs/priorities.png" alt="" width="1500" height="1000"/>
+</div>
+<div class="text-sm pb-8 font-extralight">First steps in the project. <a href="/imgs/priorities.png" target="_blank">Image</a></div>
+<div class="text-xl pt-4 pb-8 font-extralight">
+    In general, we can say that the first thing was to establish some style guides, which would help us to give consistency to the creation from that moment on. A common library, where to centralize all the assets that exist to begin to refine them and organize them by tasks. And on the other hand, in parallel a workflow would be documented from the design perspective (creation and use) and another process for the development team (production). With these three parts we would begin to give consistency and logic to all the assets we used.
+</div>
+<Image class="py-2" src="/imgs/icon-process-2.png" alt="" width="1500" height="1000"/>
+</div>
+<div class="text-sm font-extralight">Screenshots of different parts of the process. Style guides, workflow and repository. <a href="/imgs/icon-process-2.png" target="_blank">Image</a></div>
+
+<div class="text-3xl pt-8">Main goals</div>
 <div class="text-xl pt-4 ml-8 font-extralight">
-  <ul class="list-disc">
-    <li class="mb-3">The user must be able to <strong>receive any type of notification</strong> that allows direct interaction when the application is closed (push notification).</li>
-    <li class="mb-3">
-      The application must have a place <strong>where the notifications received are saved</strong> and these can be consulted later.
-    </li>
-    <li class="mb-3"><strong>The user can perceive by means of a counter, icon or button the amount of unread messages</strong>, placed in a relevant and meaningful position within the architecture of the application.</li>
-    <li class="mb-3">The user must know which notifications <strong>he receives, which he has not yet read and which he has</strong>.</li>
-    <li><strong>The user can interact at any time in the life cycle of the notification</strong> to go to the place where the action occurs or is proposed; or in the case of being informative, allow a link.</li>
+    <ul class="list-disc">
+        <li class="mb-3">To unify the patterns and style guides for creation and design, taking into account the global brand specifications.</li>
+        <li class="mb-3">Define a nomenclature of files with meaning and coherence.</li>
+        <li class="mb-3">Document and define the process of creation, organization, updating and use.</li>
+        <li class="mb-3">Create assets libraries to use together our design system in a coordinated and meaningful way.</li>
+        <li class="mb-3">Optimize design and development resources for icon management.</li>
+        <li class="mb-3">Define with the development team how they use the assets, specifications required for the correct application and optimization. As well as standardization in sizes and colors.</li>
+        <li class="mb-3">Create an accesible path for the entire product team to a single source of truth, avoiding duplications and questions.</li>
   </ul>
+  </div>
+  <Image class="py-2" src="/imgs/icons-aplication.png" alt="" width="1500" height="1000"/>
 </div>
+<div class="text-sm font-extralight"><a href="/imgs/icons-aplication.png" target="_blank">Image</a></div>
 
-<div class="text-3xl pt-8">Elements and requirements of the notification and the inbox</div>
-<div class="text-xl pt-4 ml-8 font-extralight">
-  <ul class="list-disc">
-    <li class="mb-3">The notification component can contain images; and in the text, emojis, bold or italic (markdown syntax).</li>
-<li class="mb-3">The notification includes the time, in the first 24 hours; the day of week, in the first week; and the day of month if more than a week has passed since the notification was received.</li>
-<li class="mb-3">The notification text is composed of a title and a body text.</li>
-<li class="mb-3">The text is limited to 15 characters in the title and 150 characters in the body text.</li>
-<li class="mb-3">It is necessary to design empty states screens when there aren't any notifications or connection with the server doesn't exist.</li>
-<li class="mb-3">There must be a screen for visualizing visual content, all kind of images or videos.</li>
-</ul>
-</div>
-
-<div class="text-3xl pt-8">Procces</div>
-<Image class="py-2" src="/imgs/708x398.png" alt="" width="1500" height="1000"/>
-</div>
-<div class="text-sm font-extralight">Process to add a new functionality to the app. <a href="/imgs/708x398.png" target="_blank">Image</a></div>
-<Image class="py-2" src="/imgs/Process2.png" alt="" width="1500" height="1000"/>
-</div>
-<div class="text-sm font-extralight"><a href="/imgs/Process2.png" target="_blank">Image</a></div>
-<Image class="py-2" src="/imgs/Process3.png" alt="" width="1500" height="1000"/>
-</div>
-<div class="text-sm font-extralight">Different details of the process. <a href="/imgs/Process3.png" target="_blank">Image</a></div>
-
-<div class="text-3xl pt-8">Design</div>
-<div class="text-xl pt-4 font-extralight">After having multiple <strong>meetings with the team</strong>, having <strong>sketched</strong> different ways to add this feature to the experience, <strong>iterate with the design and development teams</strong> and to define the user flows within of the app, we designed and <strong>applied the standars and components of the design system <a href="https://www.notion.so/3e77c432d8324d1ea86164effb09dc80?pvs=21" target="_blank">Mística</a></strong>.</div>
-
-<div class="text-xl pt-4 pb-4 font-extralight">In addition, it was necessary to <strong>create several new components</strong> to introduce in the library. This was a <strong>parallel process of documentation and validation</strong> of those with the global design team.</div>
-<Image class="py-2"src="/imgs/app_high_quality.png" alt="" width="1500" height="1000"/>
-</div>
-<div class="text-sm font-extralight">Visuals of the features Notification Inbox.</i> <a href="/imgs/app_high_quality.png" target="_blank">Image</a></div>
-<Image class="py-2"src="/imgs/app_high_quality_brands.png" alt="" width="1500" height="1000"/>
-</div>
-<div class="text-sm font-extralight">Brand application. <a href="/imgs/app_high_quality_brands.png" target="_blank">Image</a></div>
-
-<div class="text-xl py-6 font-extralight">
-  The application is used by different brands, so any component or screen must be applied in different colors. <strong>The design system and any new component that is added</strong> to the design system <strong>must be studied and documented</strong> in order to be applied to other brands of the company in a correct and standardized way.
-</div>
-<Image class="py-2"src="/imgs/app_high_quality _badge.png" alt="" width="1500" height="1000"/>
-</div>
-<div class="text-sm font-extralight">Design specifications of new components added to the system. <a href="/imgs/app_high_quality _badge.png" target="_blank">Image</a></div>
-<Image class="py-2" src="/imgs/app_high_quality_sta comp.png" alt="" width="1500" height="1000"/>
-</div>
-<div class="text-sm font-extralight">Design specifications of new components added to the system. <a href="/imgs/app_high_quality_sta comp.png" target="_blank">Image</a></div>
-
+<div class="text-3xl pt-8">Process</div>
 <div class="text-xl pt-4 font-extralight">
-  In addition to the transfer of the function for its development through Zeplin. It was necessary <strong> to add two new components within the Mística design system</strong>. For this, in addition to meetings and conversations about its application, it is necessary to document and define the design specifications of each component that will serve, both for the development and design team, when making a correct application of the components.
+    The workflow defines how any designer can create an icon autonomously according to the documentation, how the tasks are coordinated with the icon master, the verification process, how they are exported to include in the repository and finally, how the developers use it.
 </div>
+<div class="text-xl pt-4 pb-8 font-extralight">
+    To get at the definition of this workflow, different meetings were held with the design and development teams until a first version was obtained. But such a document is never final, it's live and continue to improve depending of needs and comments of the teams at all times.
+</div>
+<Image class="py-2" src="/imgs/Iconos_Workflow.png" alt="" width="1500" height="1000"/>
+</div>
+<div class="text-sm font-extralight">Worflow of the creation of a icon. <a href="/imgs/Iconos_Workflow.png" target="_blank">Image</a></div>
+
+<div class="text-3xl pt-8">Source of truth</div>
+<div class="text-xl pt-4 font-extralight">
+    Among all the improvements that were included in the project, one of the main ones was to establish a form of coordination and organization of work. To do this, getting a single place with all the assets accessible from design and development was what brought the greatest benefit to the entire team in this regard.
+</div>
+
+<div class="pt-10 columns-2">
+    <Image class="py-2" src="/imgs/Captura_de_pantalla_2021-08-06_a_las_12.09.54.png" alt="" width="1500" height="1000"/>
+    <Image class="py-2" src="/imgs/Captura_de_pantalla_2021-08-06_a_las_12.11.06.png" alt="" width="1500" height="1000"/>
+    </div>
+    <div class="text-sm pb-8 font-extralight ml-3">Repository in Github. </div>
+    <div class="text-xl pt-4 font-extralight">
+        As normally happens with internal improvement projects, they need time and this is always scarce because we prioritize external tasks. But it is tremendously necessary to work on internal processes and projects because this has a direct impact on the team and the "visible" work.
+    </div>
+    <div class="text-xl pt-4 font-extralight">
+        Among all the problems that we dragged, one was the one of the different places where the icons could be found (Zeplin, Sketch, StoryBook, etc). From design we knew that it was essential that the icons had one repository only and that this would ALWAYS be the only source of truth regarding doubts, changes and updates. It was also essential that this repository was controlled by the design team, which is on the product side. Not having enough time or designers, we came up with a way to do it from GitHub.
+    </div>
+    <div class="text-xl pt-4 font-extralight">
+        GitHub allowed us to create a quick repository and we managed it in an independent way from the design team. This repository would contain all the icons prepared for production, they would be displayed using the markdown syntax on the main page that would allow us to search using the browser.
+    </div>
+    <div class="text-xl pt-4 font-extralight">
+        By having the entire repository through GIT, we could apply changes and update on a recurring and documented way. GIT is a collaborative system in which anyone can improve an asset by making a pull request. And the development team (who already used GitHub), could either use the icons directly, or link them from the repository to keep them directly updated.
+    </div>
+    <div class="text-xl pt-4 font-extralight">
+        On the other hand, when there is any discrepancy on the version or if it is the appropriate icon, we have a completely updated source of truth accessible from a browser.
+    </div>
+    <div class="text-3xl pt-8">Conclusions</div>
+    <div class="text-xl pt-4 font-extralight">
+        When I left the project, a fully functional system was left in sync between development and design:
+        <ul class="list-disc ml-8 pt-4">
+            <li class="mb-3">An icon library was available for Sketch and afterwards for Figma.</li>
+            <li class="mb-3">There was a repository fully accessible from the web as the only source of truth for development, design and product when checking and using any icon.</li>
+            <li class="mb-3">Assets were fully prepared to use in .svg and .pdf code from the GitHub repository.</li>
+            <li class="mb-3">The process of creation, support and production of the icons was defined.</li>
+            <li class="mb-3">There were style and brand guides for the creation, giving uniformity and coherence to any icon created.</li>
+            <li class="mb-3">Control points were established to apply improvements to the process and to optimize it as much as possible.</li>
+        </ul>
+    </div>
+<Image class="py-2" src="/imgs/actual.png" alt="" width="1500" height="1000"/>
+</div>
+<div class="text-sm font-extralight">Process simplificated. <a href="/imgs/actual.png" target="_blank">Image</a></div>
 <div class="text-3xl pt-8">Teamwork</div>
-<div class="text-xl pt-4 font-extralight ">This design project was executed by a team of two product designers (UX+UI). In the usability and experience side, I worked with <a href="https://www.linkedin.com/in/patriciagalandecastro/">Patricia Galán</a> and <a href="https://www.linkedin.com/in/carlosdemiguelpamplona">Carlos de Miguel</a>. My role, in addition to participating in the definition of the feature and its application, mainly materialized in the <strong>visual design, the application and ideation of the new components of the design system and the application and support work with the development team.</strong></div>
+<div class="text-xl pt-4 font-extralight">
+    The development of the work was carried out as a team. I had the colaboration and effort of my colleagues <a href="https://www.linkedin.com/in/hectorsancho/">Héctor Sancho</a>, <a href="https://www.linkedin.com/in/ignacio-ceballos-torres-912b5140/">Ignacio Ceballos</a> and <a href="https://www.linkedin.com/in/maria-molinero-mourelle-a1505967/">María Molinero</a>.
+</div>
+<div class="text-xl pt-4 pb-8 font-extralight">
+    My role as owner of the project was the definition, ideation, coordination and solutions of the problems during the project and adaptation process to the new system and support.
+</div>
+<Image class="py-2" src="/imgs/mistica-icons-regular.png" alt="" width="1500" height="1000"/>
+</div>
+<div class="text-sm font-extralight">Mística Icons in Figma. <a href="/imgs/mistica-icons-regular.png" target="_blank">Image</a></div>
+
 
 <div class="text-3xl pt-8">Tool used</div>
 <div class="text-xl pt-4 ml-5 font-extralight">
   <ul class="list-disc sm:columns-2">
     <li class="mb-3">Sketch</li>
-    <li class="mb-3">Zeplin</li>
+    <li class="mb-3">Figma</li>
+    <li class="mb-3">Adobe Illustrator</li>
     <li class="mb-3">Jira</li>
     <li class="mb-3">Google docs</li>
-    <li class="mb-3">Gitbook</li>
     <li class="mb-3">Slack</li>
+    <li class="mb-3">Kactus</li>
+    <li class="mb-3">Github</li>
   </ul>
 </div>
 <div class="border-t border-slate-400 my-8"></div>
