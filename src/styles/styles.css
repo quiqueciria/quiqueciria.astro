@@ -1,4 +1,4 @@
-/* Fonts */
+/* Fonts *******************************/
 @font-face {
   font-family: "triumpblack";
   src: url("../../public/fonts/Triump-Black-webfont.eot");
@@ -12,6 +12,7 @@
   font-display: swap;
 }
 
+/* Marks *******************************/
 mark {
   margin: 0 -0.4em;
   padding: 0.1em 0.4em;
@@ -25,4 +26,15 @@ mark {
   );
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
+}
+
+/* Links *******************************/
+a {
+  padding-bottom: 1px;
+  border-bottom: 1px solid #1e293b;
+}
+
+a:hover {
+  padding-bottom: 1px;
+  border-bottom: 1px solid #fb923c;
 }
