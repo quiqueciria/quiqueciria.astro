@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quique Ciria</title>
+    <meta name="description" content="tags, tags" />
+    <link href="https://fonts.googleapis.com/css?family=Chivo:200,300,400&display=swap" rel="stylesheet">
+</head>
+
+<body class="mx-10 my-10 font-sans text-slate-800">
+
+    <div>
+        <label for="kmRuta">Kms Ruta:</label>
+        <input class="border-2 border-gray-500 p-2" type="number" id="kmRuta" /><br />
+        <button class="border-2 mt-6 p-3 rounded-md bg-gray-600 text-cyan-300" id="falta">Me faltan hasta 150km</button>
+        <div class="text-7xl pt-4" id="resultado"></div>
+      </div>
+      <script>
+        function restar() {
+        // Identificar los input de entrada
+        const kmInput = document.getElementById("kmRuta").value;
+
+        //Identificar donde se mostrará el resultado
+        const kmFaltan = document.getElementById("resultado").value;
+
+        // Sumar y restar los inputs de entrada
+        const resultado =
+            parseInt(kmInput) - 150;
+
+        //Mostrar el resultado
+        document.getElementById("resultado").innerHTML = resultado;
+        }
+        const botonFalta = document.getElementById("falta");
+        botonFalta.addEventListener("click", restar);
+    </script>
+
+</body>
