@@ -1,38 +1,111 @@
-<html>
-  <head>
-    <meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quique Ciria</title>
-    <meta name="description" content="tags, tags" />
-    <link href="https://fonts.googleapis.com/css?family=Chivo:200,300,400&display=swap" rel="stylesheet">
+---
+import '../styles/styles.css';
+
+// Función para refrescar el access_token usando el refresh_token
+const refreshAccessToken = async () => {
+  const response = await fetch('https://www.strava.com/oauth/token', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: new URLSearchParams({
+      client_id: import.meta.env.STRAVA_CLIENT_ID,       // Tu client_id
+      client_secret: import.meta.env.STRAVA_CLIENT_SECRET, // Tu client_secret
+      refresh_token: import.meta.env.STRAVA_REFRESH_TOKEN, // Tu refresh_token
+      grant_type: 'refresh_token',
+    }),
+  });
+
+  const data = await response.json();
+
+  if (response.ok) {
+    // Aquí guardamos el nuevo access_token y refresh_token si es necesario
+    // Actualiza el archivo .env, una base de datos o algún otro almacenamiento
+    return {
+      access_token: data.access_token,
+      refresh_token: data.refresh_token, // También puedes actualizar el refresh_token si es necesario
+    };
+  } else {
+    console.error('Error al refrescar el token', data);
+    throw new Error('Error al refrescar el token');
+  }
+};
+
+// Obtener las actividades, refrescando el token si es necesario
+const fetchActivities = async () => {
+  let accessToken = import.meta.env.STRAVA_ACCESS_TOKEN;
+
+  // Intenta hacer la solicitud con el access_token actual
+  let res = await fetch('https://www.strava.com/api/v3/athlete/activities', {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+
+  // Si el token ha expirado (por ejemplo, si la API devuelve 401), refrescarlo
+  if (res.status === 401) {
+    const tokens = await refreshAccessToken();
+    accessToken = tokens.access_token;
+
+    // Reintentar la solicitud con el nuevo access_token
+    res = await fetch('https://www.strava.com/api/v3/athlete/activities', {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+  }
+
+  // Procesar los datos de actividades
+  const activities = await res.json();
+  return activities;
+};
+
+// Obtener las actividades
+let activities = [];
+try {
+  activities = await fetchActivities();
+} catch (err) {
+  console.error("Error fetching activities:", err);
+}
+const oneWeekAgo = new Date();
+oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
+const recentActivities = activities.filter(activity => {
+  const activityDate = new Date(activity.start_date); // Asegúrate de que activity.date sea una fecha válida
+  return activityDate >= oneWeekAgo;
+});
+
+const totalDistance = recentActivities.reduce((accumulator, activity) => {
+  return accumulator + activity.distance;
+}, 0);
+---
+
+<!-- Renderizamos las actividades en la página -->
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quique Ciria</title>
+  <meta name="description" content="tags, tags" />
+  <link href="https://fonts.googleapis.com/css?family=Chivo:200,300,400&display=swap" rel="stylesheet">
 </head>
 
 <body class="mx-10 my-10 font-sans text-slate-800">
+<p class="text-xl text-gray-500 mb-2">Tu entrenamiento</p>
+<p class="font-['triumpblack'] text-6xl tracking-wide text-orange-600"> {(totalDistance / 1000).toFixed(2)} km</p>
+<p class=" text-gray-500 mb-8 mt-1">Es la distancia recorrida los últimos 7 días</p>
 
-    <div>
-        <label for="kmRuta">Kms Ruta:</label>
-        <input class="border-2 border-gray-500 p-2" type="number" id="kmRuta" /><br />
-        <button class="border-2 mt-6 p-3 rounded-md bg-gray-600 text-cyan-300" id="falta">Me faltan hasta 150km</button>
-        <div class="text-7xl pt-4" id="resultado"></div>
-      </div>
-      <script>
-        function restar() {
-        // Identificar los input de entrada
-        const kmInput = document.getElementById("kmRuta").value;
-
-        //Identificar donde se mostrará el resultado
-        const kmFaltan = document.getElementById("resultado").value;
-
-        // Sumar y restar los inputs de entrada
-        const resultado =
-            parseInt(kmInput) - 150;
-
-        //Mostrar el resultado
-        document.getElementById("resultado").innerHTML = resultado;
-        }
-        const botonFalta = document.getElementById("falta");
-        botonFalta.addEventListener("click", restar);
-    </script>
-
+{activities.length > 0 ? (
+<ul>
+  {activities.slice(0, 4).map((activity) => (
+    <li class="border-2 mt-2 p-4 border-orange-200 rounded-md w-80" key={activity.id}>
+     <div class="text-gray-500 text-sm font-extralight"> {activity.name} | {new Date(activity.start_date).getDate()}/{new Date(activity.start_date).getMonth() + 1}</div>
+    <div class="text-3xl font-extralight mt-2">{(activity.distance / 1000).toFixed(1)} km |  {(activity.moving_time / 3600).toFixed(1)} Horas</div>
+    </li>
+  ))}
+</ul>
+) : (
+<p>No se encontraron actividades.</p>
+)}
 </body>
+</html>
