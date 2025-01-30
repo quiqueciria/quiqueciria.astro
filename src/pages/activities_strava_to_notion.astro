@@ -63,7 +63,7 @@ Necesitas registrar tu aplicación en Strava para obtener tus credenciales <code
         <li class="list-none pt-1 pb-4">Y en la parte final de la url colocamos <code>approval_prompt=force</code> para forzar....</li>
         <li class="pt-1 pb-2">Se nos mostrará una página para autorizar nuestra aplicación API</li>
         <div class="py-2 ">
-          <Image src="/imgs/aurorization_strava_api.png" alt="pantalla de la API de strava" width="553" height="520" class='p-1 border-2 border-gray-400'/>
+          <Image src="/imgs/aurorization_strava_api.png" alt="pantalla de la API de strava" width="553" height="455" class='p-1 border-2 border-gray-400'/>
       </div>
         <li class="pt-1 pb-2">El usuario será redirigido de vuelta a tu <code>redirect_uri</code> con un código como parámetro dentro de la URL. Copia o toma nota de ese código. Un ejemplo de esa redirección sera esta:</br><code>https://localhost/?state=&code=AQUI_VENDRÁ_EL_CÓDIGO&scope=read,activity:read_all</code></li>
         <li class="pt-1 pb-4">Usa ese código para solicitar un <code>access_token</code> haciendo una petición <code>POST</code>. Para ello vamos a hacerlo con <a href="https://www.postman.com/" target="_blank">Postman</a>.</li></ul>
@@ -87,11 +87,11 @@ Necesitas registrar tu aplicación en Strava para obtener tus credenciales <code
                 <li class="list-none ml-4 pt-1 pb-2">∘ <code>scope</code>Este valor coloca <code>activity:read_all</code></li>
         </li>
         <div class="py-2 ">
-            <Image src="/imgs/query_params.png" alt="" width="1500" height="1000" class='p-1 border-2 border-gray-400'/>
+            <Image src="/imgs/query_params.png" alt="" width="553" height="455" class='p-1 border-2 border-gray-400'/>
         </div>
 <li class="pt-1 pb-2">Recibirás un objeto JSON que incluye el <code>access_token</code>. A partir de ahí podrás usarlo para hacer solicitudes a la API de Strava.</li>
 <div class="py-2 ">
-    <Image src="/imgs/json_object.png" alt="" width="1500" height="1000" class='p-1 border-2 border-gray-400'/>
+    <Image src="/imgs/json_object.png" alt="" width="553" height="455" class='p-1 border-2 border-gray-400'/>
 </div>
 </ul>
 </div>
@@ -99,7 +99,8 @@ Necesitas registrar tu aplicación en Strava para obtener tus credenciales <code
 <div class="text-xl pt-2 font-extralight">Una vez que tienes un <code>access_token</code>, puedes hacer solicitudes a los <code>endpoints</code> de la API de Strava. </div>
 <div class="text-xl pt-2 font-extralight">Por ejemplo, para obtener las actividades recientes de un usuario en Postman:
     <ul class="list-disc ml-8">
-        <li class="pt-1 pb-2">Introduce este endpoint en un solicitud <code>GET: https://www.strava.com/api/v3/athlete/activities</code></li>
+      <li class="pt-1 pb-2">Dentro de tu colección crea una nueva <code>request</code> del tipo <code class="bg-green-300">GET</code></li>
+        <li class="pt-1 pb-2">Introduce este endpoint en la solicitud <code> https://www.strava.com/api/v3/athlete/activities</code></li>
         <li class="pt-1 pb-2">En la pestaña de <code>Autorization</code>, en el desplegable, elige <code>Bearer Token</code></li>
         <li class="pt-1 pb-2">En el campo <code>Token</code> coloca el <code>acces_token</code> que has obtenido anteriormente en la solicitud <code>POST</code></li>
     </ul>
