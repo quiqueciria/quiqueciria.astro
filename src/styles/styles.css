@@ -38,3 +38,11 @@ a:hover {
   padding-bottom: 1px;
   border-bottom: 1px solid #fb923c;
 }
+
+/* Code text ***************************/
+code {
+  background: rgba(135, 131, 120, 0.15);
+  border-radius: 8px;
+  font-size: 75%;
+  padding: 0.2em 0.4em;
+}
