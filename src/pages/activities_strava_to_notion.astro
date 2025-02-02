@@ -18,19 +18,20 @@ import { Image } from "astro:assets";
    <a href="/"><img src="/imgs/arrow-left.svg"></a>
     </div>
     <div class="text-5xl mt-10 mb-10">
-        Actividades de Strava en Notion
+      Controla tu Strava con Notion
     </div>
     <div class="py-2 ">
         <Image src="/imgs/header.png" alt="" width="400" height="533"/>
     </div>
     <div class="text-3xl pt-8">Introducción</div>
   <div class="text-xl pt-4 pb-8 font-extralight">
-    Este es el primer artículo espero de tres en que cuento como estoy visualizando mis actividades de Strava en Notion y así poder ver si en los 7 días anteriores llevo una media de 150 km, para, más o menos, saber que estoy en forma con la bici.
+    Este es el primero de una serie de tres artículos donde mostraré cómo visualizo mis actividades de Strava en una tabla Notion. De momento, mi objetivo es visualizar mi promedio de kilómetros en bicicleta de los últimos 7 días naturales (la idea es que sea alrededor de los 150 km) para ver aproximadamente en que estado estoy a nivel físico.
   </div>
-  <div class="text-xl">Son tres posts porque lo divido en las siguientes partes:</div>
+  <div class="text-xl pt-4 pb-8 font-extralight">Pero si es verdad, que una vez los datos de las actividades en Notion, ya podemos hacer lo que queramos con ellos, ya sea dentro del propio Notión, o utilizándolo como una base de datos.</div>
+  <div class="text-xl">Serán tres posts divididos en las siguientes partes:</div>
   <div class="text-xl pt-4 ml-8 font-extralight">
     <ul class="list-disc">
-    <li class="mb-3">API de Strava y obtención de datos de las actividades</li>
+    <li class="mb-3">API de Strava y obtención de datos de las actividades <code class="bg-green-200">actual</code></li>
     <li class="mb-3">Pintar los datos obtenidos de Strava en una tabla de Notion <code class="bg-orange-200">pendiente</code></li>
     <li class="mb-3">Automatizar la sincronización con GitHub Action <code class="bg-orange-200">pendiente</code></li>
     </ul>
@@ -54,37 +55,33 @@ Necesitas registrar tu aplicación en Strava para obtener tus credenciales <code
     </div>
     <div class="text-xl pt-4">2º Autenticación de Strava</div>
     <div class="text-xl pt-2 font-extralight">Strava usa <a href="https://auth0.com/es/intro-to-iam/what-is-oauth-2" target="_blank"> 0Auth 2.0</a> para autenticarse. Para acceder a los datos de usuario, primero necesitas obtener un <code>access_token</code></div>
-    <div class="p-4 mt-4 mb-4 bg-orange-100 font-extralight rounded-lg">📌 Recuerda que en las URLs lo que tienes que sustituir con tus datos en lo marcado en mayúsculas.</div>
+    <div class="p-4 mt-4 mb-4 bg-orange-100 font-extralight rounded-lg">📌 Recuerda que en las URLs que pongo de ejemplo lo que tienes que sustituir con tus datos es lo marcado en mayúsculas.</div>
 
     <div class="text-xl pt-2 font-extralight"><strong>Conseguir el código para obtener el <code>acces_token</code></strong>
     <ul class="list-disc ml-8">
-        <li class="pt-1 pb-2"> Redirige al usuario a la URL de autorización de Strava con tu <code>client_id</code>:</br><code>https://www.strava.com/oauth/authorize?client_id=YOUR_CLIENTresponse_type=code&redirect_uri=YOUR_REDIRECT_URL&scope=read,activity:read_all&approval_prompt=force</code></li>
+        <li class="pt-1 pb-2"> Redirige al usuario a la URL de autorización de Strava con tu <code>client_id</code>:</br><code>https://www.strava.com/oauth/authorize?client_id=YOUR_CLIENT&response_type=code&redirect_uri=YOUR_REDIRECT_URL&scope=read,activity:read_all&approval_prompt=force</code></li>
         <li class="list-none pt-1 pb-4">En la parte de <code>YOUR_REDIRECT_URI</code> colocamos <code>http://localhost</code> y así nos devolvera el código en una redirección.</li>
-        <li class="list-none pt-1 pb-4">Y en la parte final de la url colocamos <code>approval_prompt=force</code> para forzar....</li>
+        <li class="list-none pt-1 pb-4">Y en la parte final de la url colocamos <code>approval_prompt=force</code> para garantizar que el usuario vuelva a autorizar la aplicación, incluso si ya lo había hecho antes. Esto es útil para asegurararnos de que obtienemos los permisos adecuados.</li>
         <li class="pt-1 pb-2">Se nos mostrará una página para autorizar nuestra aplicación API</li>
         <div class="py-2 ">
           <Image src="/imgs/aurorization_strava_api.png" alt="pantalla de la API de strava" width="553" height="455" class='p-1 border-2 border-gray-400'/>
       </div>
-        <li class="pt-1 pb-2">El usuario será redirigido de vuelta a tu <code>redirect_uri</code> con un código como parámetro dentro de la URL. Copia o toma nota de ese código. Un ejemplo de esa redirección sera esta:</br><code>https://localhost/?state=&code=AQUI_VENDRÁ_EL_CÓDIGO&scope=read,activity:read_all</code></li>
-        <li class="pt-1 pb-4">Usa ese código para solicitar un <code>access_token</code> haciendo una petición <code>POST</code>. Para ello vamos a hacerlo con <a href="https://www.postman.com/" target="_blank">Postman</a>.</li></ul>
+        <li class="pt-1 pb-2">Una vez le damos a autorizar, el usuario será redirigido de vuelta a la <code>redirect_uri</code> con un código como parámetro dentro de la URL. Copia o toma nota de ese código. Un ejemplo de esa redirección que se nos mostrará sera esta: <code>https://localhost/?state=&code=AQUI_VENDRÁ_EL_CÓDIGO&scope=read,activity:read_all</code></li>
+        <li class="pt-1 pb-4">Usa ese código para solicitar un <code>access_token</code> haciendo una petición <code>POST</code>. Para ello vamos a hacerlo con <a href="https://www.postman.com/" target="_blank">Postman</a>, que es una aplicación para construir, probar y documentar APIs.</li></ul>
         <strong>Usar Postman para conseguir el <code>acces_token</code></strong>
         <ul class="list-disc ml-8">
-            <li class="pt-1 pb-2">Crear una nueva solicitud en Postman</li>
+            <li class="pt-1 pb-2">Crea una nueva solicitud en Postman</li>
             <li class="list-none ml-4 pt-1 pb-2">∘ Abre Postman y haz clic en "New" → "Request".</li>
             <li class="list-none ml-4 pt-1 pb-2">∘ Ponle un nombre a la solicitud, como "Strava Activities" y elige una colección o crea una nueva para guardar tu solicitud.</li>
             <li class="pt-1 pb-2">Configurar la solicitud <code class="bg-yellow-300">POST</code></li>
             <li class="list-none ml-4 pt-1 pb-2">∘ Método: <code>POST</code></li>
             <li class="list-none ml-4 pt-1 pb-2">∘ URL: <code>https://www.strava.com/oauth/token?</code></li>
-            <li class="pt-1 pb-2 line-through">Añadir el token de autenticación</li>
-            <li class="list-none ml-4 pt-1 pb-2 line-through">∘ Ve a la pestaña <code>Authorization</code> en Postman.</li>
-            <li class="list-none ml-4 pt-1 pb-2 line-through">∘ En el menú desplegable <code>Type</code>, selecciona <code>Bearer Token</code>.</li>
-            <li class="list-none ml-4 pt-1 pb-2 line-through">∘ Pega el código que has obtenido de la url en la redirección anterior.</li>
             <li class="pt-1 pb-2">En el cuerpo de la solicitud (Query Params), debes incluir:
                 <li class="list-none ml-4 pt-1 pb-2">∘ <code>client_id</code></li>
                 <li class="list-none ml-4 pt-1 pb-2">∘ <code>client_secret</code></li>
                 <li class="list-none ml-4 pt-1 pb-2">∘ <code>code</code> El código de la url de la reedirección anterior</li>
                 <li class="list-none ml-4 pt-1 pb-2">∘ <code>grant_type</code> Aquí coloca <code>authorization_code</code></li>
-                <li class="list-none ml-4 pt-1 pb-2">∘ <code>scope</code>Este valor coloca <code>activity:read_all</code></li>
+                <li class="list-none ml-4 pt-1 pb-2">∘ <code>scope</code> Este valor coloca <code>activity:read_all</code></li>
         </li>
         <div class="py-2 ">
             <Image src="/imgs/query_params.png" alt="" width="553" height="455" class='p-1 border-2 border-gray-400'/>
