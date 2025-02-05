@@ -42,7 +42,16 @@ a:hover {
 /* Code text ***************************/
 code {
   background: rgba(135, 131, 120, 0.15);
-  border-radius: 8px;
+  border-radius: 4px;
   font-size: 75%;
   padding: 0.2em 0.4em;
+}
+
+.code_block {
+  font-family: "Chivo", "Courier New", Courier, monospace;
+  background: #f4f4f5;
+  border-radius: 4px;
+  font-size: 70%;
+  padding: 1.5em;
+  border: 1px solid #d4d4d8;
 }

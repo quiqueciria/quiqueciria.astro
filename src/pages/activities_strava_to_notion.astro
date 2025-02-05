@@ -32,7 +32,7 @@ import { Image } from "astro:assets";
   <div class="text-xl pt-4 ml-8 font-extralight">
     <ul class="list-disc">
     <li class="mb-3">API de Strava y obtención de datos de las actividades <code class="bg-green-200">actual</code></li>
-    <li class="mb-3">Pintar los datos obtenidos de Strava en una tabla de Notion <code class="bg-orange-200">pendiente</code></li>
+    <li class="mb-3"><a href="activities_strava_to_db_notion"> Pintar los datos obtenidos de Strava en una tabla de Notion</a>
     <li class="mb-3">Automatizar la sincronización con GitHub Action <code class="bg-orange-200">pendiente</code></li>
     </ul>
   </div>
@@ -40,13 +40,13 @@ import { Image } from "astro:assets";
   <div class="text-xl pt-4">1º Regístrate en la API de Strava</div>
 <div class="text-xl pt-2 font-extralight">
 Necesitas registrar tu aplicación en Strava para obtener tus credenciales <code>(client_id, client_secret y access_token)</code> Para ello:
-<ul class="list-disc ml-8"></ul>
+<ul class="list-disc ml-8">
     <li class="ml-8 pt-1 pb-2">Ve a la <a href="https://www.strava.com/settings/api" target="_blank">página de desarrolladores de Strava</a> e inicia sesión con tu cuenta.</li>
     <li class="ml-8 pb-2">Crea una nueva aplicación y toma nota de los siguientes datos:</li>
     <li class="ml-8 list-none pb-2">∘ <code>client_id</code></li>
     <li class="ml-8 list-none pt-1 pb-2">∘ <code>client_secret</code></li>
       <li class="ml-8 list-none pt-1 pb-2">∘ <code>access_token</code> (Este lo obtendrás durante el proceso de autenticación).</li>
-        </ul>
+  </ul>
         <div class="py-2 ">
             <Image src="/imgs/strava_api.png" alt="pantalla de la API de strava" width="1500" height="1000" class='p-1 border-2 border-gray-400'/>
         </div>
