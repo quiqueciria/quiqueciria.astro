@@ -23,11 +23,11 @@ import { Image } from "astro:assets";
     <div class="text-3xl pt-8">Introducción</div>
   <div class="text-xl pt-4 pb-4 font-extralight">Este es el segundo post de la serie <strong> <a href="activities_strava_to_notion">Controla tu Strava con Notion</a></strong>. En esta parte vamos a contar como podemos visualizar los datos de nuestras actividades que ya hemos obtenido de Strava en una base de datos en Notion.
   </div>
-  <div class="text-xl pb-8 font-extralight">Son dos pasos los que hay que hacer, por un lado, crear una integración en Notion y la base de datos; y por otro lado los archivos de javascript para ejecutarlos.</div>
-  <div class="text-xl">Está serie son tres posts divididos en las siguientes partes:</div>
+  <div class="text-xl pb-8 font-extralight">Son dos pasos los que hay que hacer, por un lado, crear una <strong>integración en Notion</strong> y la <strong>base de datos</strong>; y por otro lado el <strong>script en javascrit</strong> para ejecutarlo.</div>
+  <div class="text-xl">Esta serie son tres posts divididos en las siguientes partes:</div>
   <div class="text-xl pt-4 ml-8 font-extralight">
     <ul class="list-disc">
-    <li class="mb-3"><a href="activities_strava_to_notion"> API de Strava y obtención de datos de las actividades</a></li>
+    <li class="mb-3"><a href="activities_strava_to_notion"> API de Strava y obtención de datos de las actividades.</a></li>
     <li class="mb-3">Pintar los datos obtenidos de Strava en una tabla de Notion <code class="bg-green-200">actual</code></li>
     <li class="mb-3">Automatizar la sincronización con GitHub Action <code class="bg-orange-200">pendiente</code></li>
     </ul>
@@ -77,34 +77,36 @@ import { Image } from "astro:assets";
     <li class=" ml-4 pb-2 pt-2"><iframe style="width:100%; height: 1090px;" allow="clipboard-write" src="https://emgithub.com/iframe.html?target=https%3A%2F%2Fgithub.com%2Fquiqueciria%2Fcode-blocks%2Fblob%2Fmain%2Fsync-strava-post.js&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></iframe></li>
     <li class="pb-4">4. Sustituye cada texto de la configuración por los tuyos propios.</li>
     <li class=" ml-4 pb-4"><div class="p-4 bg-gray-200 font-extralight rounded-lg">Si no encuentras el código de <code>NOTION_DATABASE_ID</code> este está cuando pulsas sobre el nombre de la tabla y pinchas en “Copy link to view”. En la URL que nos dará, nos quedamos con el número que hay antes de <code>?v=</code>, por ejemplo: <code>137ad089a85b80caab69f15ecbc01e9b</code>.</div></li>
-    <li class="pb-2">5. Guarda el archivo y desde el terminal ejecútalo</li>
+    <li class="pb-2">5. Guarda el archivo y desde el terminal ejecútalo:</li>
     <li class=" ml-4 pb-2"><div class="code_block">node sync_strava_notion.js</div></li>
     <li class="pb-2">6. Ahora, si todo ha ido bien, se deberían de haber cargado las actividades en la base de datos de Notion.</li>
   </ul>
-  <div class="text-3xl pt-8">Cosas a tener en cuenta</div>
+  <div class="text-3xl pt-8">Cosas importantes a tener en cuenta</div>
   <div class="text-2xl pt-4">1. Propiedades</div>
   <div class="text-xl pt-4 font-extralight">Si en tu base de datos de Notion las propiedades tienen nombres diferentes o están configuradas de manera distinta habrá errores, asegúrate de ajustar las propiedades con el mismo nombre y tipo que tienes en el código.  </div>
   <div class="text-2xl pt-8">2. Convertir a kilómetros</div>
   <div class="text-xl pt-4 pb-4 font-extralight">Dado que la API de Strava nos devuelve la distancia en metros, puedes dividir esa distancia por 1000 para convertirla a kilómetros.</div>
   <ul class="text-xl ml-8 list-disc font-extralight">
-    <li>Incluye la siguiente constánte <code>const distanceInKilometers = activity.distance / 1000;</code> después de leer las actividades y antes de pintar las actividades en la base de datos de Notion.</li>
-    <li class="mt-4">Redondear la cifra. Si quieres redondear la distancia a un número de decimales específico, puedes usar la función toFixed(). Por ejemplo, para redondear a 2 decimales <code>const distanceInKilometers = parseFloat((activity.distance / 1000).toFixed(2));</code></li>
+    <li>Incluye la siguiente constante <code>const distanceInKilometers = activity.distance / 1000;</code> después de leer las actividades y antes de pintar las actividades en la base de datos de Notion.</li>
+    <li class="mt-4">Redondear la cifra. Si quieres redondear la distancia a un número de decimales específico, puedes usar la función <code>toFixed()</code>. Por ejemplo, para redondear a 2 decimales <code>const distanceInKilometers = parseFloat((activity.distance / 1000).toFixed(2));</code></li>
   </ul>
   <div class="text-2xl pt-8">3. Duplicados cada vez que se ejecuta el script</div>
-  <div class="text-xl pt-4 pb-4 font-extralight">Esto ocurre si estás ejecutando el código de forma costante y creando entradas de manera repetida para cada actividad de Strava, sin asegurarte antes de que no se estén creando duplicados en Notion. Para solucionarlo podemos hacer lo siguiente:</div>
+  <div class="text-xl pt-4 pb-4 font-extralight">Esto ocurre, como es normal, si estás ejecutando el código de forma costante y creando entradas de manera repetida para cada actividad de Strava, sin asegurarte antes de que no se estén creando duplicados en Notion. Para solucionarlo podemos hacer lo siguiente:</div>
+  <div class="p-4 mb-8 bg-green-100 font-extralight rounded-lg">📌 A continuación tienes los pasos, pero el código completo lo puedes encontrar al final del post</div>
   <ul class="text-xl ml-4 list-none font-extralight">
-    <li>1. Obtener el ID de la actividad desde Strava: Cada actividad de Strava tiene un <code>ID</code> único, y puedes usar este <code>ID</code> para asegurarte de que no estás agregando la misma actividad más de una vez.</br>Crea una nueva entrada y propiedad como el resto de las veces anteriores, tanto en tu código, como en la base de datos de Notion.</li>
+    <li>1. Obtener el ID de la actividad desde Strava: Cada actividad de Strava tiene un <code>ID</code> único, y puedes usar este <code>ID</code> para asegurarte de que no estás agregando la misma actividad más de una vez.</br>Crea una nueva entrada y propiedad como el resto de las veces anteriores, tanto en tu código, como en la base de datos de Notion para tener controlado el número de <code>ID</code>.</li>
     <li class=" pb-2 pt-2"><iframe style="width:100%; height:268px;" allow="clipboard-write" src="https://emgithub.com/iframe.html?target=https%3A%2F%2Fgithub.com%2Fquiqueciria%2Fcode-blocks%2Fblob%2Fmain%2Fstrava-id.js&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></iframe></li>
     <li class=" pb-2">2. En el bucle incluye <code>async</code> para realizar la consultas y escrituras de manera asíncrona <code>activities.forEach(async (activity) => {</li></code>
-    <li class=" pb-2 pt-2">3. Comprueba si la actividad ya está en Notion</li>
+    <li class=" pb-2 pt-2">3. Comprueba si la actividad ya está en Notion:</li>
     <li class=" pb-2 pt-2"><iframe style="width:100%; height:268px;" allow="clipboard-write" src="https://emgithub.com/iframe.html?target=https%3A%2F%2Fgithub.com%2Fquiqueciria%2Fcode-blocks%2Fblob%2Fmain%2Factivity-check.js&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></iframe></li>
     <li>4. Si no hay una entrada existente, crea una nueva.</li>
     <li><div class="code_block"> (existingPage.results.length === 0) {</div></li>
     <li class=" pb-2 pt-2"><iframe style="width:100%; height:793px;" allow="clipboard-write" src="https://emgithub.com/iframe.html?target=https%3A%2F%2Fgithub.com%2Fquiqueciria%2Fcode-blocks%2Fblob%2Fmain%2Fcreate_db_notion.js&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></iframe></li>
   </ul>
   <div class="text-3xl pt-4">El código del script completo</div>
-  <div class="text-xl pt-4 font-extralight">Este es el código final del sript que cada vez ejecutemos desde el terminal nos actualizará si tenemos alguna actividad nueva desde Strava a Notion. En el siguiente post veremos como automatizar todo este proceso con Github Action y así "olvidarnos" de la ejecución manual.</div>
+  <div class="text-xl pt-4 font-extralight">Este es el código final del sript que cada vez ejecutemos desde el terminal nos actualizará si tenemos alguna actividad nueva desde Strava a Notion.</div>
   <div class=" pb-2 pt-2"><iframe style="width:100%; height:1087px;" allow="clipboard-write" src="https://emgithub.com/iframe.html?target=https%3A%2F%2Fgithub.com%2Fquiqueciria%2Fcode-blocks%2Fblob%2Fmain%2Fsync-strava-post.js&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></iframe></div>
+  <div class="text-xl pb-4 font-extralight">En el siguiente post veremos como automatizar todo este proceso con Github Action y así "olvidarnos" de la ejecución manual.</div>
 
 
 
