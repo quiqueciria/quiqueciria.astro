@@ -92,7 +92,7 @@ import { Image } from "astro:assets";
   </ul>
   <div class="text-2xl pt-8">3. Duplicados cada vez que se ejecuta el script</div>
   <div class="text-xl pt-4 pb-4 font-extralight">Esto ocurre, como es normal, si estás ejecutando el código de forma costante y creando entradas de manera repetida para cada actividad de Strava, sin asegurarte antes de que no se estén creando duplicados en Notion. Para solucionarlo podemos hacer lo siguiente:</div>
-  <div class="p-4 mb-8 bg-green-100 font-extralight rounded-lg">📌 A continuación tienes los pasos, pero el código completo lo puedes encontrar al final del post</div>
+  <div class="p-4 mb-8 bg-green-100 font-extralight rounded-lg">📌 A continuación tienes los pasos, pero el código completo del script lo puedes encontrar al final del post</div>
   <ul class="text-xl ml-4 list-none font-extralight">
     <li>1. Obtener el ID de la actividad desde Strava: Cada actividad de Strava tiene un <code>ID</code> único, y puedes usar este <code>ID</code> para asegurarte de que no estás agregando la misma actividad más de una vez.</br>Crea una nueva entrada y propiedad como el resto de las veces anteriores, tanto en tu código, como en la base de datos de Notion para tener controlado el número de <code>ID</code>.</li>
     <li class=" pb-2 pt-2"><iframe style="width:100%; height:268px;" allow="clipboard-write" src="https://emgithub.com/iframe.html?target=https%3A%2F%2Fgithub.com%2Fquiqueciria%2Fcode-blocks%2Fblob%2Fmain%2Fstrava-id.js&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></iframe></li>
@@ -105,12 +105,11 @@ import { Image } from "astro:assets";
   </ul>
   <div class="text-3xl pt-4">El código del script completo</div>
   <div class="text-xl pt-4 font-extralight">Este es el código final del sript que cada vez ejecutemos desde el terminal nos actualizará si tenemos alguna actividad nueva desde Strava a Notion.</div>
-  <div class=" pb-2 pt-2"><iframe style="width:100%; height:1087px;" allow="clipboard-write" src="https://emgithub.com/iframe.html?target=https%3A%2F%2Fgithub.com%2Fquiqueciria%2Fcode-blocks%2Fblob%2Fmain%2Fsync-strava-post.js&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></iframe></div>
+  <div class=" pb-2 pt-2"><iframe style="width:100%; height:1822px;" allow="clipboard-write" src="https://emgithub.com/iframe.html?target=https%3A%2F%2Fgithub.com%2Fquiqueciria%2Fcode-blocks%2Fblob%2Fmain%2Fsync-strava.js&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></iframe></div>
   <div class="text-xl pb-4 font-extralight">En el siguiente post veremos como automatizar todo este proceso con Github Action y así "olvidarnos" de la ejecución manual.</div>
-
-
-
-
+<div class="text-xl pt-2 mb-4 font-extralight">
+Si quieres comentar algo sobre este post o cualquier duda puedes hacerlo en el siguiente hilo de Bluesky:
+</div>
   <blockquote class="bluesky-embed" data-bluesky-uri="at://did:plc:fmtdax4ph3cv2dgyclytul7n/app.bsky.feed.post/3lh6rhq3lc22q" data-bluesky-cid="bafyreid5lcmorfddkpjwffmzr63ldmwv4pph7xaekk52mjnqrfjibzptpu"><p lang="es">He escrito el primer post de como estoy visualizando mi actividades de Strava en Notion a través de su API : www.quiqueciria.es/activities_s...<br><br><a href="https://bsky.app/profile/did:plc:fmtdax4ph3cv2dgyclytul7n/post/3lh6rhq3lc22q?ref_src=embed">[image or embed]</a></p>&mdash; Quique Ciria (<a href="https://bsky.app/profile/did:plc:fmtdax4ph3cv2dgyclytul7n?ref_src=embed">@quiqueci.bsky.social</a>) <a href="https://bsky.app/profile/did:plc:fmtdax4ph3cv2dgyclytul7n/post/3lh6rhq3lc22q?ref_src=embed">2 de febrero de 2025, 11:01</a></blockquote><script async src="https://embed.bsky.app/static/embed.js" charset="utf-8"></script>
 
 
