@@ -1,0 +1,101 @@
+---
+import '../styles/styles.css';
+import { Image } from "astro:assets";
+---
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quique Ciria</title>
+    <meta name="description" content="strava, notion, postman" />
+    <link href="https://fonts.googleapis.com/css?family=Chivo:200,300,400&display=swap" rel="stylesheet">
+</head>
+
+  <body class="mx-10 my-10 max-w-3xl font-sans text-slate-800 bg-stone-100">
+    <div class="">
+   <a href="/"><img src="/imgs/arrow-left.svg"></a>
+    </div>
+    <div class="text-5xl mt-10 mb-10">
+      Automatiza Strava y Notion con GitHub Actions
+    </div>
+    <div class="text-3xl pt-8">Introducción</div>
+    <div class="text-xl pt-4 pb-4 font-extralight">Este es el segundo post de la serie <strong> <a href="/activities_strava_to_notion">Controla tu Strava con Notion</a></strong>. En esta tercera, y última parte, vamos a contar como automatizar la sincronización de actividades con nuestra base de datos de Notion y olvidarnos de este proceso.
+    </div>
+  <div class="text-xl pt-4 pb-8 font-extralight">Como hemos visto en los anteriores posts, el <code>acces_token</code> de Strava tiene una vida útil de 6 horas, por tanto, es necesario ir actualizándolo constatemente para poder seguir recibiendo los datos. Para no tener que hacer esto de forma manual, que no sería nada sostenible, vamos a usar una GitHub Action que se encargue a una hora del día de volver a solicitar el nuevo <code>acces_token</code>, solicitar las actividades y pintarlas en la tabla de Notion completamente actualizadas.</div>
+  <div class="text-xl">Esta serie son tres posts divididos en las siguientes partes:</div>
+  <div class="text-xl pt-4 ml-8 font-extralight">
+    <ul class="list-disc">
+    <li class="mb-3"><a href="/activities_strava_to_notion"> API de Strava y obtención de datos de las actividades</a></li>
+    <li class="mb-3"><a href="/activities_strava_to_db_notion"> Pintar los datos obtenidos de Strava en una tabla de Notion</a></li>
+    <li class="mb-3">Automatizar la sincronización de Strava y Notion con GitHub Action <code class="bg-green-200">actual</code></li>
+    </ul>
+  </div>
+  <div class="text-3xl pt-8">1. Prepara tu repositorio en GitHub</div>
+<div class="text-xl pt-2 font-extralight">
+    Crea un nuevo repo en Github para el guardar el código que ejcutaremos y ponle el nombre por ejemplo de <code>strava-to-notion</code>.</div>
+<div class="text-xl pt-2 font-extralight">
+    Sincronízalo con tu carpeta local, que es en la que estábamos ejecutando para que pintara los datos en Notion.
+</div>
+<div class="text-3xl pt-8">2. Crea un archivo de workflow en GitHub Actions</div>
+<div class="text-xl pt-2 font-extralight">
+    Los workflows en GitHub Actions están definidos en archivos YAML dentro del directorio <code>.github/workflows/</code> del repo. Vamos a crear un flujo de trabajo para automatizar la ejecución del script que sincroniza Strava con Notion.</div>
+
+    <div class="text-2xl pt-4">Estructura básica del directorio <code>workflows</code></div>
+    <ul class="text-xl list-disc pt-4 ml-8 font-extralight">
+        <li class="pb-2">1. Crea el directorio <code>.github/workflows/</code> en tu repositorio si no existe.</li>
+        <li class="pb-2">2. Crea un archivo YAML dentro de <code>.github/workflows/</code>, por ejemplo, <code>sync-strava.yml</code></li>
+    </ul>
+
+<div class="text-3xl pt-8">3. Configura el archivo <code>sync-strava.yml</code></div>
+<div class="text-xl pt-2 font-extralight">Añadimos el siguiente código para ejecutar el flujo de trabajo en un horario definido:</div>
+<div class="pt-4"><iframe style="width:100%; height:800px;" allow="clipboard-write" src="https://emgithub.com/iframe.html?target=https%3A%2F%2Fgithub.com%2Fquiqueciria%2Fcode-blocks%2Fblob%2Fmain%2Fsync-strava.yml&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></iframe></div>
+<div class="text-3xl pt-8">4. Configura los secretos de GitHub</div>
+<div class="text-xl pt-2 font-extralight">Los secretos son variables de entorno que se almacenan de manera segura en GitHub, y los usaremos para almacenar las credenciales sensibles como los tokens de acceso para Strava y Notion. Lo hacemos de la siguiente manera:</div>
+<ul class="text-xl list-decimal pt-4 ml-8 font-extralight">
+    <li class="pb-2">Ve a tu repositorio en GitHub.</li>
+    <li class="pb-2">En la barra superior, haz clic en <strong>Settings</strong>.</li>
+    <li class="pb-2">En el menú lateral, selecciona <strong>Secrets and variables</strong> > <strong>Actions</strong>.</li>
+    <li class="pb-2">Agrega los siguientes secretos. <strong>Recuerda, un repositorio independiente por cada secreto</strong>:</li>
+    <ul class="text-xl list-disc pt-4 ml-8 font-extralight">
+        <li class="pb-2"><code>STRAVA_ACCESS_TOKEN</code>: Tu token de acceso de la API de Strava.</li>
+        <li class="pb-2"><code>STRAVA_REFRESH_TOKEN</code>: Tu token para poder refrescar el token de acceso cuando caduque.</li>
+        <li class="pb-2"><code>STRAVA_CLIENT_ID</code>: Tu ID de cliente</li>
+        <li class="pb-2"><code>STRAVA_CLIENT_SECRET</code>: Tu código secreto de cliente</li>
+        <li class="pb-2"><code>NOTION_INTEGRATION_TOKEN</code>: Tu token de integración de la API de Notion.</li>
+        <li class="pb-2"><code>NOTION_DATABASE_ID</code>: El ID de la base de datos en Notion donde deseas almacenar las actividades.</li>
+    </ul>
+</ul>
+<div class="text-3xl pt-8">5. Actualiza tu archivo <code>sync-strava.js</code></code></div>
+<div class="text-xl pt-2 font-extralight">Es necesario actualizar el archivo principal con las variables de entorno, que son los Secretos de GitHub, y nos permitiran autenticarnos con Strava y acceder a los datos, así como también en Notion. También tenemos que actualizar el token de Strava cuando expire</div>
+<div class="pt-4"><iframe frameborder="0" scrolling="no" style="width:100%; height:2746px;" allow="clipboard-write" src="https://emgithub.com/iframe.html?target=https%3A%2F%2Fgithub.com%2Fquiqueciria%2Fcode-blocks%2Fblob%2Fmain%2Fsync-strava-example.js&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></iframe></div>
+
+<div class="text-3xl pt-8">6. Súbelo a GitHub y activa el workflow</code></code></div>
+<div class="text-xl pt-2 font-extralight">Una vez que hayas configurado el archivo <code>.github/workflows/sync-strava.yml</code> y agregado los secretos, súbelo a tu repositorio en GitHub. GitHub Actions ya solo se encargará de ejecutar el workflow según la programación que hayas definido.</div>
+
+<div class="text-3xl pt-8">7. Comprueba que funciona bien el flujo de trabajo</code></code></div>
+<div class="text-xl pt-2 font-extralight">Puedes ver la ejecución de los workflows directamente en GitHub:</div>
+<ul class="text-xl list-disc pt-4 ml-8 font-extralight">
+    <li class="pb-2">Ve a tu repositorio en GitHub.</li>
+    <li class="pb-2">Haz clic en la pestaña <strong>Actions</strong>.</li>
+    <li class="pb-2">Aquí verás el historial de ejecución de tus workflows. Si todo está configurado correctamente, deberías ver que el flujo de trabajo se ejecuta automáticamente según la programación que definiste.</li>
+    <li class="pb-2">También puedes ejecutar desde aquí de forma manual las Actions y ver que todo funciona correctamente.</li>
+</ul>
+<div class="text-xl pt-2 font-extralight">Ahora ya, con este último post, deberías de poder ver en la base de datos de Notion como se actualiza las actividades según se vean generando nuevas en Strava. En Notion, ya puedes hacer infinidad de cosas para saber estadísticas o poder medir tu entrenamiento.</div>
+
+
+<div class="text-xl pt-2 mb-4 font-extralight">
+Si quieres comentar algo sobre este post o la serie sobre Strava puedes hacerlo en el siguiente hilo de Bluesky:
+</div>
+
+  <blockquote class="bluesky-embed" data-bluesky-uri="at://did:plc:fmtdax4ph3cv2dgyclytul7n/app.bsky.feed.post/3lh6rhq3lc22q" data-bluesky-cid="bafyreid5lcmorfddkpjwffmzr63ldmwv4pph7xaekk52mjnqrfjibzptpu"><p lang="es">He escrito el primer post de como estoy visualizando mi actividades de Strava en Notion a través de su API : www.quiqueciria.es/activities_s...<br><br><a href="https://bsky.app/profile/did:plc:fmtdax4ph3cv2dgyclytul7n/post/3lh6rhq3lc22q?ref_src=embed">[image or embed]</a></p>&mdash; Quique Ciria (<a href="https://bsky.app/profile/did:plc:fmtdax4ph3cv2dgyclytul7n?ref_src=embed">@quiqueci.bsky.social</a>) <a href="https://bsky.app/profile/did:plc:fmtdax4ph3cv2dgyclytul7n/post/3lh6rhq3lc22q?ref_src=embed">2 de febrero de 2025, 11:01</a></blockquote><script async src="https://embed.bsky.app/static/embed.js" charset="utf-8"></script>
+
+
+<div class="border-t border-slate-400 my-8"></div>
+<div>
+  <a class="border-b pb-1 border-slate-800 hover:border-orange-400" href="/">Quique Ciria </a>• 2025 • 
+  <a class="border-b pb-1 border-slate-800 hover:border-orange-400" href="mailto:info@quiqueciria.es">info @ quiqueciria.es</a>
+</div>
+  </body>
+</html>
