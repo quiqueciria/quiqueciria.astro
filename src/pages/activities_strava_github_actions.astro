@@ -23,8 +23,8 @@ import { Image } from "astro:assets";
     <div class="text-3xl pt-8">Introducción</div>
     <div class="text-xl pt-4 pb-4 font-extralight">Este es el segundo post de la serie <strong> <a href="/activities_strava_to_notion">Controla tu Strava con Notion</a></strong>. En esta tercera, y última parte, vamos a contar como automatizar la sincronización de actividades con nuestra base de datos de Notion y olvidarnos de este proceso.
     </div>
-  <div class="text-xl pt-4 pb-8 font-extralight">Como hemos visto en los anteriores posts, el <code>acces_token</code> de Strava tiene una vida útil de 6 horas, por tanto, es necesario ir actualizándolo constatemente para poder seguir recibiendo los datos. Para no tener que hacer esto de forma manual, que no sería nada sostenible, vamos a usar una GitHub Action que se encargue a una hora del día de volver a solicitar el nuevo <code>acces_token</code>, solicitar las actividades y pintarlas en la tabla de Notion completamente actualizadas.</div>
-  <div class="text-xl">Esta serie son tres posts divididos en las siguientes partes:</div>
+  <div class="text-xl pt-4 pb-8 font-extralight">Como hemos visto en los anteriores posts, el <code>acces_token</code> de Strava tiene una vida útil de 6 horas, por tanto, es necesario ir actualizándolo constantemente para poder seguir recibiendo los datos. Para no tener que hacer esto de forma manual que no sería nada sostenible, vamos a usar una GitHub Action que se encargue a una hora del día de volver a pedir un nuevo <code>acces_token</code>, solicitar las actividades y pintarlas en la tabla de Notion completamente actualizadas.</div>
+  <div class="text-xl">Este post forma parte de una serie de tres posts sobre Strava y Notion:</div>
   <div class="text-xl pt-4 ml-8 font-extralight">
     <ul class="list-disc">
     <li class="mb-3"><a href="/activities_strava_to_notion"> API de Strava y obtención de datos de las actividades</a></li>
